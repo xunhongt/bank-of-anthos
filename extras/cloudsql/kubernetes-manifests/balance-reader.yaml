@@ -41,9 +41,9 @@ spec:
           value: "8080"
         # toggle Cloud Trace export
         - name: ENABLE_TRACING
-          value: "true"
+          value: "false"
         - name: ENABLE_METRICS
-          value: "true"
+          value: "false"
         - name: POLL_MS
           value: "100"
         - name: CACHE_SIZE
@@ -91,7 +91,7 @@ spec:
           limits:
             cpu: "200m"
             memory: "100Mi"
-        image: gcr.io/cloudsql-docker/gce-proxy:1.34.0@sha256:477527640fdd50710285254dd343f081144c4110e7ab17a1e606425bbe632e49
+        image: gcr.io/cloudsql-docker/gce-proxy:1.37.4@sha256:261d122dac33e65b90eeab2c10ae370bbb5477192c4b3b13e1047d792da9ed62
         env:
         - name: CONNECTION_NAME
           valueFrom:

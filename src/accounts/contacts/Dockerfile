@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Use the official Python docker container, slim version, running Debian
-FROM python:3.12.2-slim@sha256:5c73034c2bc151596ee0f1335610735162ee2b148816710706afec4757ad5b1e as base
+FROM python:3.12.6-slim@sha256:ad48727987b259854d52241fac3bc633574364867b8e20aec305e6e7f4028b26 as base
 
 FROM base as builder
 
@@ -36,5 +36,8 @@ ENV LOG_LEVEL info
 
 # Add application code.
 COPY . .
+
+# Ensure files are readable for non-root users
+RUN chmod a+r *
 
 CMD gunicorn -b :$PORT --threads 4 --log-config logging.conf --log-level=$LOG_LEVEL "contacts:create_app()"
